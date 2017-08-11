@@ -9,8 +9,17 @@
   </head>
 
   <body>
+    <h1><%= yield(:title) %></h1>
+    
+    <%= render "partials/nav" %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
+
+
+  <footer>
+    &copy Bloggies 2017
+  </footer>
 </html>

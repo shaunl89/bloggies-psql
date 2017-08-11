@@ -1,9 +1,7 @@
-<h2><%= @post.title %></h2>
+<% provide(:title, "Bloggies || Show Post: #{@post.title}") %>
 
 <p><%= @post.content %></p>
 <small>
   Author: <%= @post.user.name %> (<%= @post.created_at %>)
 </small>
 <br>
-
-<%= link_to "My Posts", posts_path %>

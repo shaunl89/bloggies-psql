@@ -1,4 +1,4 @@
-<h1>Edit Post: <%= @current_post.id %></h1>
+<% provide(:title, "Edit Post: #{@current_post.id}") %>
 
 <%= form_for @current_post do |f| %>
   <%= f.label :title %>
@@ -8,7 +8,7 @@
   <%= f.label :content %>
   <%= f.text_field :content %>
   <br>
-  
+
   <%= f.hidden_field :user_id %>
 
   <%= f.submit %>

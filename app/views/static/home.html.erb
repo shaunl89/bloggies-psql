@@ -1,4 +1,5 @@
-<h1>Static#home</h1>
+<% provide(:title, 'Bloggies') %>
+
 <p>Find me in app/views/static/home.html.erb</p>
 
 <!-- Hide this if current_user exist -->
@@ -7,13 +8,3 @@
 <%= current_user.inspect %> -->
 
 <br>
-
-<% if current_user %>
-  <!-- true -->
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-
-<% else %>
-  <!-- false -->
-  <%= link_to "Login", new_user_session_path %>
-  <%= link_to "Register", new_user_registration_path %>
-<% end %>
