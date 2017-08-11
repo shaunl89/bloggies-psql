@@ -1,0 +1,57 @@
+<h1>All posts by <%= current_user.name %></h1>
+
+<h2>Restaurants from Google Places API</h2>
+<ul>
+  <% @places_data['results'].each do |result| %>
+  <li>
+    <h3><%= result['name'] %></h3>
+    <p><%= result['photos'][0]['html_attributions'][0] %></p>
+  </li>
+  <% end %>
+</ul>
+
+<h2>News from API</h2>
+<ul>
+  <% @news_data['articles'].each do |article| %>
+  <li>
+    <h3><%= article['title'] %></h3>
+    <p><%= article['description'] %></p>
+    <%= image_tag article['urlToImage'] %>
+    <!-- <img src="<%#= article['urlToImage'] %>" alt="<%= article['description'] %>"> -->
+  </li>
+  <% end %>
+</ul>
+
+<h2>Create new post</h2>
+<%= form_for @new_post do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+
+<%= f.label :content %>
+<%= f.text_field :content %>
+<br>
+
+<%= f.hidden_field :user_id %>
+
+<%= f.submit %>
+<% end %>
+
+<ul>
+    <% @all_posts.each do |post, index| %>
+    <% if post.id #check if post has id => exist in db %>
+      <li>
+        <h4><%= post.title %></h4>
+        <p><%= post.content %></p>
+
+        <%= link_to "view", post_path(post) %>
+        <%= link_to "delete", post_path(post), method: :delete %>
+        <%= link_to "edit", edit_post_path(post) %>
+
+      </li>
+    <% end %>
+  <% end  %>
+  </ul>
+
+
+<%#= @all_posts.inspect %>
